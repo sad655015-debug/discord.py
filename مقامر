@@ -1,0 +1,13 @@
+require('dotenv').config();
+const { Client, GatewayIntentBits, Partials } = require('discord.js');
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent], partials: [Partials.Channel] });
+const PREFIX = '!';
+const games = new Map();
+const cardPool = [
+  { id: 'mirror_hentor', name: 'مراه حنتور', desc: 'تحميك من أي تأثير قاتل وترد الهجمة (مرة واحدة)', weight: 8 },
+  { id: 'curse_sands', name: 'لعنة الرمال', desc: 'تجمد اللاعب لجولة كاملة (لا يستطيع الفعل)', weight: 10 },
+  { id: 'servant_bettor', name: 'خادم المراهن', desc: 'تُطلع صاحب البطاقة على أسماء كروت غير مكشوفة دون استخدامها', weight: 12 },
+  { id: 'order_bettor', name: 'امر المراهن', desc: 'تأمر المراهن يختار لك كرت ويجب أن يكون إيجابي', weight: 6 },
+  { id: 'chaos_demon', name: 'شيطان الفوضى', desc: 'إذا مات صاحب البطاقة يقتل جميع اللاعبين معه', weight: 3 },
+  { id: 'instant_death', name: 'الموت الحضي', desc: 'تموت فورا عند تفعيلها', weight: 2 },
+  { i
